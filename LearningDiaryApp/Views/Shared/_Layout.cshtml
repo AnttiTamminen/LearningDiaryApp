@@ -3,37 +3,47 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - LearningDiaryApp</title>
+    <title>@ViewData["Title"] - Learning Diary</title>
+    <link rel="icon" href="book-solid.svg">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">LearningDiaryApp</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+    <header class="sticky-top">
+        <nav class="row">
+            <div class="col-1">
+                <a class="btn btn-primary" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            </div>
+            <div class="dropdown col-1">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add Entry</button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Add Topic</a>
+                    <a class="dropdown-item" href="#">Add Task</a>
+                    <a class="dropdown-item" href="#">Add Note</a>
                 </div>
+            </div>
+            <div class="dropdown col-1">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search</button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Search Topic</a>
+                    <a class="dropdown-item" href="#">Search Task</a>
+                    <a class="dropdown-item" href="#">Search Note</a>
+                </div>
+            </div>
+            <div class="col-7">
+                <h3 class="text-center">Learning Diary 5000</h3>
+            </div>
+            <div class="col-1">
+                <a class="btn btn-primary" href="#" role="button">Info</a>
+            </div>
+            <div class="col-1">
+                <a class="btn btn-primary" href="#" role="button">Logout</a>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main">
             @RenderBody()
         </main>
-    </div>
 
     <footer class="border-top footer text-muted">
         <div class="container">
