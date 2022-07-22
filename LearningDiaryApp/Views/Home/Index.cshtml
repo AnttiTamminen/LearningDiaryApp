@@ -1,6 +1,6 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model ViewModel
+
+@{ ViewData["Title"] = "Home Page"; }
 
 <div class="container-fluid homeheader">
     <div class="row">
@@ -19,69 +19,95 @@
         </div>
     </div>
 </div>
-<div class="container topic">
-    <div class="container topicheaders">
-        <div class="row">
-            <div class="col-2">
-                <h2>Topic1</h2>
-            </div>
-            <div class="col">
-                <p>Description: asd asd asd</p>
-            </div>
-            <div class="col">
-                <p>Time to master: 29 h</p>
-            </div>
-            <div class="col">
-                <p>Time spent: 13 h</p>
-            </div>
 
+@if (Model != null)
+{
+    foreach (Topic item in Model.Topics)
+    {
+        <div class="container topic">
+            <div class="container topicheaders">
+                <div class="row">
+                    <div class="col-2">
+                        <h2>@item.Title</h2>
+                    </div>
+                    <div class="col">
+                        <p>Description: @item.Description</p>
+                    </div>
+                    <div class="col">
+                        <p>TimeToMaster: @item.TimeToMaster</p>
+                    </div>
+                    <div class="col">
+                        <p>TimeSpent: @item.TimeSpent)</p>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p>Source: @item.Source</p>
+                    </div>
+                    <div class="col">
+                        <p>StartLearningDate: @item.StartLearningDate</p>
+                    </div>
+                    <div class="col">
+                        <p>InProgress: @item.InProgress</p>
+                    </div>
+                    @if (item.InProgress == false)
+                    {
+                        <div class="col">
+                            <p>CompletionDate: @item.CompletionDate</p>
+                        </div>
+                    }
+                </div>
+            </div>
+            @foreach (var item2 in item.Tasks)
+            {
+        <div class="container task">
+            <div class="row">
+                <div class="col">
+                    <h3>@item2.Title</h3>
+                </div>
+                <div class="col">
+                    <p>Description: @item2.Description</p>
+                </div>
+                <div class="col">
+                    <p>Deadline: @item2.Deadline</p>
+                </div>
+                <div class="col">
+                    <p>Priority: @item2.Priority</p>
+                </div>
+                <div class="col">
+                    <p>Done: @item2.Done</p>
+                </div>
+            </div>
+                <div class="row">
+                    @foreach (var item3 in item2.Notes)
+                    {
+                            <div class="col-5 note">
+                                <h4>@item3.Title</h4>
+                                <p>@item3.Note1</p>
+                            </div>
+                    }
+                </div>
+            </div>
+            }
         </div>
+    }
+}
+else
+{
+    <div class="container">
         <div class="row">
-            <div class="col">
-                <p>Source: kirja</p>
-            </div>
-            <div class="col">
-                <p>Learning start date: 1.1.2000</p>
-            </div>
-            <div class="col">
-                <p>In progress: no</p>
-            </div>
-            <div class="col">
-                <p>Completion date: 1.1.2000</p>
+            <div class="col text-center">
+                <h2 class="missing">Diary is empty/missing :(</h2>
             </div>
         </div>
     </div>
-    <div class="container task">
-        <div class="row">
-            <div class="col">
-                <h3>Task1</h3>
-            </div>
-            <div class="col">
-                <p>Description: asd asd asd</p>
-            </div>
-            <div class="col">
-                <p>Deadline: 1.1.2000</p>
-            </div>
-            <div class="col">
-                <p>Priority: High</p>
-            </div>
-            <div class="col">
-                <p>Done: No</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-5 note">
-                <h4>Note1</h4>
-                <p>fdkf kasfokoaksof kpoaks fpokaspok poskpokf spoakpofk poaksof kaposkp ofkaspofksofköoaskfoasfök asöok öoska öokasöokasöfo köoskaföok öokfs öoköof köosk öosfk öoksaö ksö kök öoka föoksföao kaöof köaok ö ökkökök</p>
-            </div>
-            <div class="col-5 note">
-                <h4>Note2</h4>
-                <p>fdkf kasfokoaksof kpoaks fpokaspok poskpokf spoakpofk poaksof kaposkp ofkaspofksofköoaskfoasfök asöok öoska öokasöokasöfo köoskaföok öokfs öoköof köosk öosfk öoksaö ksö kök öoka föoksföao kaöof köaok ö ökkökök</p>
-            </div>
-            <div class="col-5 note">
-                <h4>Note3</h4>
-                <p>fdkf kasfokoaksof kpoaks fpokaspok poskpokf spoakpofk poaksof kaposkp ofkaspofksofköoaskfoasfök asöok öoska öokasöokasöfo köoskaföok öokfs öoköof köosk öosfk öoksaö ksö kök öoka föoksföao kaöof köaok ö ökkökök</p>
-            </div>
-        </div>
+}
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <p> </p>
     </div>
 </div>
+
+

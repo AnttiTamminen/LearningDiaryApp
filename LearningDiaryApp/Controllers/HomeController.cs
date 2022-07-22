@@ -6,6 +6,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Dynamic;
+using LearningDiaryApp.Data;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.EntityFrameworkCore;
 
 namespace LearningDiaryApp.Controllers
 {
@@ -13,14 +17,21 @@ namespace LearningDiaryApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly LearningDiaryAppContext _context;
+
+        public HomeController(ILogger<HomeController> logger, LearningDiaryAppContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            ViewModel mymodel = new ViewModel();
+            mymodel.Topics = await _context.Topic.ToListAsync();
+            mymodel.Tasks = await _context.Task.ToListAsync();
+            mymodel.Notes = await _context.Note.ToListAsync();
+            return View(mymodel);
         }
 
         public IActionResult Privacy()
