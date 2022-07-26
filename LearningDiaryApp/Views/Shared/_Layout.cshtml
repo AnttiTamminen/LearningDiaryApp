@@ -8,7 +8,15 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body>
+<body onload="loginPrompt()">
+    <div class="row" id="login" style="display: none;">
+        <form class="col-3" id="formi" style="padding-left: 4em; padding-top: 4em;">
+            <label for="logg">Password</label>
+            <input class="form-control" name="Id" type="text" id="logg" autocomplete="off">
+        </form>
+        <button class="btn btn-primary col-1" Id="givePass" onclick="setPassword()" style="margin-left: 4em; margin-top: 1em; width: 4em; padding: .2em;">Enter</button>
+    </div>
+    <div id="allCont">
     <header class="sticky-top">
         <nav class="row">
             <div class="col-1">
@@ -37,23 +45,55 @@
                 <a class="btn btn-primary" href="#" role="button" onclick="showInfo()">Info</a>
             </div>
             <div class="col-1">
-                <a class="btn btn-primary" href="#" role="button">Logout</a>
+                <a class="btn btn-primary" href="#" role="button" onclick="logout()">Logout</a>
             </div>
         </nav>
     </header>
     <main role="main" id="maini">
         @RenderBody()
     </main>
-    
+
     <div class="container" id="infoText" style="display: none;">
+        <div class="jumbotron text-center" id="intro">
+            <h3>Learning diary app is designed to help you in your learning by keeping all your notes organized and easy to use.</h3>
+        </div>
         <div class="row">
-            <div class="col">
-                <h1>testi</h1>
+            <div class="col-2"></div>
+            <div class="col-4">
+                <h3>Main page</h3>
+                <p>From the mainpage you can see all of the content in the diary. You can sort the order of the list by topic from the drop down menu at top of the list.</p>
+            </div>
+            <div class="col-4">
+                <h3>Modify</h3>
+                <p>By clicking the button of desired entry in the homepage list or in search results, you can modify topic, task or note of your choosing.</p>
             </div>
         </div>
         <div class="row">
-            <div class="col text-center">
-                <a class="btn btn-primary" id="ok" href="#" role="button" onclick="hideInfo()">Ok</a>
+            <div class="col-2"></div>
+            <div class="col-4">
+                <h3>Search</h3>
+                <p>By clicking the top row menu you can choose to search topics, tasks or notes. You can use any of the properties as search term. Search results give all the entries that include search words.</p>
+            </div>
+            <div class="col-4">
+                <h3>Delete</h3>
+                <p>By clicking the button of desired entry in the homepage list or in search results, you can delete topic, task or note of your choosing. Notice that deleting topic removes also its tasks and notes and removing task deletes also its notes.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-4">
+                <h3>Create</h3>
+                <p>From the top row menu you can select to create a new entry to the diary. If you want to create task or note, you need to have existing topic to create these to.</p>
+            </div>
+            <div class="col-4">
+                <h3>Log out</h3>
+                <p>You can log out from top right corner of the page. Note that you can not change or retrieve the password you have.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col">
+                <a class="btn btn-primary" id="ok" href="#" role="button" onclick="hideInfo()">Back</a>
             </div>
         </div>
     </div>
@@ -67,5 +107,6 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
+</div>
 </body>
 </html>
