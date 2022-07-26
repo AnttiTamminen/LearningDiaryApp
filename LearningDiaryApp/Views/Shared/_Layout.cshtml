@@ -34,16 +34,29 @@
                 <h3 class="text-center">Learning Diary 5000</h3>
             </div>
             <div class="col-1">
-                <a class="btn btn-primary" href="#" role="button">Info</a>
+                <a class="btn btn-primary" href="#" role="button" onclick="showInfo()">Info</a>
             </div>
             <div class="col-1">
                 <a class="btn btn-primary" href="#" role="button">Logout</a>
             </div>
         </nav>
     </header>
-        <main role="main">
-            @RenderBody()
-        </main>
+    <main role="main" id="maini">
+        @RenderBody()
+    </main>
+    
+    <div class="container" id="infoText" style="display: none;">
+        <div class="row">
+            <div class="col">
+                <h1>testi</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center">
+                <a class="btn btn-primary" id="ok" href="#" role="button" onclick="hideInfo()">Ok</a>
+            </div>
+        </div>
+    </div>
 
     <footer class="border-top footer text-muted">
         <div class="container">
