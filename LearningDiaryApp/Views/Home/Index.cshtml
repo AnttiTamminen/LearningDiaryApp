@@ -12,11 +12,19 @@
         <div class="dropdown col text-center">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort Topics by</button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Start date</a>
-                <a class="dropdown-item" href="#">Title</a>
-                <a class="dropdown-item" href="#">Completion date</a>
+                <a class="dropdown-item" onclick="sortTopics(Title, Model.Topics)">Title</a>
+                <a class="dropdown-item" onclick="sortTopics(TSpent, Model.Topics)">Time spent</a>
+                <a class="dropdown-item" onclick="sortTopics(TMaster, Model.Topics)">Time to master</a>
+                <a class="dropdown-item" onclick="sortTopics(Prog, Model.Topics)">Progress</a>
+                <a class="dropdown-item" onclick="sortTopics(SDate, Model.Topics)">Start date</a>
+                <a class="dropdown-item" onclick="sortTopics(CDate, Model.Topics)">Completion date</a>
             </div>
         </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col text-center" id="addTopic">
+        <a class="btn btn-secondary addButt" id="topiButt" type="button" asp-area="" asp-controller="Topics" asp-action="Create">+Topic</a>
     </div>
 </div>
 
@@ -25,72 +33,93 @@
     foreach (Topic item in Model.Topics)
     {
         <div class="container topic" id="topicList">
-            <div class="container topicheaders">
-                <div class="row">
-                    <div class="col-2">
-                        <h2>@item.Title</h2>
-                    </div>
-                    <div class="col">
-                        <p>Description: @item.Description</p>
-                    </div>
-                    <div class="col">
-                        <p>TimeToMaster: @item.TimeToMaster</p>
-                    </div>
-                    <div class="col">
-                        <p>TimeSpent: @item.TimeSpent</p>
-                    </div>
-
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <p>Source: @item.Source</p>
-                    </div>
-                    <div class="col">
-                        <p>StartLearningDate: @item.StartLearningDate</p>
-                    </div>
-                    <div class="col">
-                        <p>InProgress: @item.InProgress</p>
-                    </div>
-                    @if (item.InProgress == false)
-                    {
-                        <div class="col">
-                            <p>CompletionDate: @item.CompletionDate</p>
-                        </div>
-                    }
-                </div>
-            </div>
-            @foreach (var item2 in item.Tasks)
-            {
-        <div class="container task">
             <div class="row">
                 <div class="col">
-                    <h3>@item2.Title</h3>
+                    <a class="btn btn-secondary addButt" id="tasButt" asp-area="" asp-controller="Tasks" asp-action="Create">+Task</a>
                 </div>
-                <div class="col">
-                    <p>Description: @item2.Description</p>
+                <div class="col text-right">
+                    <a asp-area="" asp-controller="Topics" asp-action="Edit"><img src="~/pen-to-square-solid.svg" height="18" /></a>
+                    <a asp-area="" asp-controller="Topics" asp-action="Delete" style="margin-left: .5em;"><img src="~/trash-can-solid.svg" height="17" /></a>
                 </div>
-                <div class="col">
-                    <p>Deadline: @item2.Deadline</p>
                 </div>
-                <div class="col">
-                    <p>Priority: @item2.Priority</p>
-                </div>
-                <div class="col">
-                    <p>Done: @item2.Done</p>
-                </div>
-            </div>
-                <div class="row">
-                    @foreach (var item3 in item2.Notes)
-                    {
-                            <div class="col-5 note">
-                                <h4>@item3.Title</h4>
-                                <p>@item3.Note1</p>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h2 id="itemHead">@item.Title</h2>
+                        </div>
+                        <div class="col">
+                            <p>Description: @item.Description</p>
+                        </div>
+                        <div class="col">
+                            <p>Source: @item.Source</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>TimeToMaster: @item.TimeToMaster</p>
+                        </div>
+                        <div class="col">
+                            <p>TimeSpent: @item.TimeSpent</p>
+                        </div>
+                        <div class="col">
+                            <p>StartLearningDate: @item.StartLearningDate</p>
+                        </div>
+                        <div class="col">
+                            <p>InProgress: @item.InProgress</p>
+                        </div>
+                        @if (item.InProgress == false)
+                        {
+                            <div class="col">
+                                <p>CompletionDate: @item.CompletionDate</p>
                             </div>
-                    }
+                        }
+                    </div>
                 </div>
+                @foreach (var item2 in item.Tasks)
+                {
+                    <div class="container task">
+                        <div class="row">
+                            <div class="col">
+                                <a class="btn btn-secondary addButt" id="notButt" asp-area="" asp-controller="Notes" asp-action="Create">+Note</a>
+                            </div>
+                            <div class="col text-right">
+                                <a asp-area="" asp-controller="Tasks" asp-action="Edit"><img src="~/pen-to-square-solid.svg" height="18" /></a>
+                                <a asp-area="" asp-controller="Tasks" asp-action="Delete" style="margin-left: .5em;"><img src="~/trash-can-solid.svg" height="17" /></a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h3 id="itemHead">@item2.Title</h3>
+                            </div>
+                            <div class="col">
+                                <p>Description: @item2.Description</p>
+                            </div>
+                            <div class="col">
+                                <p>Deadline: @item2.Deadline</p>
+                            </div>
+                            <div class="col">
+                                <p>Priority: @item2.Priority</p>
+                            </div>
+                            <div class="col">
+                                <p>Done: @item2.Done</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            @foreach (var item3 in item2.Notes)
+                            {
+                                <div class="col-5 note">
+                                    <div class="text-right">
+                                        <a asp-area="" asp-controller="Notes" asp-action="Edit" style=""><img src="~/pen-to-square-solid.svg" height="18" /></a>
+                                        <a asp-area="" asp-controller="Notes" asp-action="Delete" style="margin-left: .5em;"><img src="~/trash-can-solid.svg" height="17" /></a>
+                                    </div>
+                                    <h4 style="display: inline;">@item3.Title</h4>
+                                    <p>@item3.Note1</p>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
             </div>
-            }
-        </div>
     }
 }
 else

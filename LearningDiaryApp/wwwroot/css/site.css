@@ -52,20 +52,17 @@ h1 {
 }
 
 .topic {
-    margin-top: 2.5em;
+    margin-bottom: 2em;
     background: lightgray;
     border-radius: 1em;
     max-width: 92%;
-}
-
-.topicheaders {
-    padding-top: 1.5em;
+    padding-top: .5em;
 }
 
 .task {
     background: lightblue;
     width: auto;
-    padding-top: 1em;
+    padding-top: .5em;
     margin: 1.5em;
     border-radius: 1em;
 }
@@ -90,4 +87,56 @@ h4 {
 
 #ok {
     margin: 1.5em;
+}
+
+.addButt {
+    font-weight: 900;
+    font-size: .8em;
+    height: 1.6em;
+    max-width: 4em;
+    border: 0;
+    padding: 0;
+    padding-left: .3em;
+    padding-right: .3em;
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: .5em;
+    color: black;
+}
+
+.addButt:hover {
+    background: rgb(100, 211, 189);
+    color: black;
+}
+
+#topiButt {
+    background-color: lightgray;
+}
+
+#topiButt:hover {
+    background: rgb(100, 211, 189);
+    color: black;
+}
+
+#tasButt {
+    background-color: lightblue;
+}
+
+#tasButt:hover {
+    background: rgb(100, 211, 189);
+    color: black;
+}
+
+#notButt {
+    background-color: lightyellow;
+}
+
+#notButt:hover {
+    background: rgb(100, 211, 189);
+    color: black;
+}
+
+#addTopic {
+    margin-top: 1.5em;
+    margin-bottom: 1em;
 }

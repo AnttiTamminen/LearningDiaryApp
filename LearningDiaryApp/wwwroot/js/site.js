@@ -10,7 +10,7 @@ function hideInfo() {
 
 function loginPrompt() {
     var password = sessionStorage.getItem("passKey");
-    if (password != "gfdsa") {  //!!!this need to be moved to database!!!
+    if (password != "asd") {  //password is showing in debugging of browser and also content can be switched on without password from there
         document.getElementById("allCont").style.display = "none";
         document.getElementById("login").style.display = "block";
     } else {
@@ -29,4 +29,30 @@ function setPassword() {
 function logout() {
     sessionStorage.setItem("passKey", "password");
     loginPrompt();
+}
+
+function sortTopics(option, topics)
+{
+    switch (option) {
+        case "Title":
+            break;
+
+        case "TSpent":
+            break;
+
+        case "TMaster":
+            break;
+
+        case "Prog":
+            break;
+
+        case "SDate":
+            break;
+
+        case "CDate":
+            break;
+
+        default:
+            break;
+    }
 }
