@@ -10,7 +10,7 @@ function hideInfo() {
 
 function loginPrompt() {
     var password = sessionStorage.getItem("passKey");
-    if (password != "asd") {  //password is showing in debugging of browser and also content can be switched on without password from there
+    if (password != "asd") {  //password is showing in browser debugging -> to database?
         document.getElementById("allCont").style.display = "none";
         document.getElementById("login").style.display = "block";
     } else {
@@ -31,7 +31,7 @@ function logout() {
     loginPrompt();
 }
 
-function sortTopics(option, topics)
+function sortTopics(option)
 {
     switch (option) {
         case "Title":

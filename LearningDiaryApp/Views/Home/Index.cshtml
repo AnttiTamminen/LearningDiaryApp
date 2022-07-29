@@ -12,12 +12,12 @@
         <div class="dropdown col text-center">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort Topics by</button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" onclick="sortTopics(Title, Model.Topics)">Title</a>
-                <a class="dropdown-item" onclick="sortTopics(TSpent, Model.Topics)">Time spent</a>
-                <a class="dropdown-item" onclick="sortTopics(TMaster, Model.Topics)">Time to master</a>
-                <a class="dropdown-item" onclick="sortTopics(Prog, Model.Topics)">Progress</a>
-                <a class="dropdown-item" onclick="sortTopics(SDate, Model.Topics)">Start date</a>
-                <a class="dropdown-item" onclick="sortTopics(CDate, Model.Topics)">Completion date</a>
+                <a class="dropdown-item" onclick="sortTopics(Title)">Title</a>
+                <a class="dropdown-item" onclick="sortTopics(TSpent)">Time spent</a>
+                <a class="dropdown-item" onclick="sortTopics(TMaster)">Time to master</a>
+                <a class="dropdown-item" onclick="sortTopics(Prog)">Progress</a>
+                <a class="dropdown-item" onclick="sortTopics(SDate)">Start date</a>
+                <a class="dropdown-item" onclick="sortTopics(CDate)">Completion date</a>
             </div>
         </div>
     </div>
@@ -35,11 +35,11 @@
         <div class="container topic" id="topicList">
             <div class="row">
                 <div class="col">
-                    <a class="btn btn-secondary addButt" id="tasButt" asp-area="" asp-controller="Tasks" asp-action="Create">+Task</a>
+                    <a class="btn btn-secondary addButt" id="tasButt" asp-area="" asp-controller="Tasks" asp-action="Create"  asp-route-id="@item.Id">+Task</a>
                 </div>
                 <div class="col text-right">
-                    <a asp-area="" asp-controller="Topics" asp-action="Edit"><img src="~/pen-to-square-solid.svg" height="18" /></a>
-                    <a asp-area="" asp-controller="Topics" asp-action="Delete" style="margin-left: .5em;"><img src="~/trash-can-solid.svg" height="17" /></a>
+                    <a asp-area="" asp-controller="Topics" asp-action="Edit" asp-route-id="@item.Id"><img src="~/pen-to-square-solid.svg" height="18"/></a>
+                    <a asp-area="" asp-controller="Topics" asp-action="Delete" asp-route-id="@item.Id" style="margin-left: .5em;"><img src="~/trash-can-solid.svg" height="17"/></a>
                 </div>
                 </div>
                 <div class="container">
@@ -83,8 +83,8 @@
                                 <a class="btn btn-secondary addButt" id="notButt" asp-area="" asp-controller="Notes" asp-action="Create">+Note</a>
                             </div>
                             <div class="col text-right">
-                                <a asp-area="" asp-controller="Tasks" asp-action="Edit"><img src="~/pen-to-square-solid.svg" height="18" /></a>
-                                <a asp-area="" asp-controller="Tasks" asp-action="Delete" style="margin-left: .5em;"><img src="~/trash-can-solid.svg" height="17" /></a>
+                                <a asp-area="" asp-controller="Tasks" asp-action="Edit" asp-route-id="@item2.Id"><img src="~/pen-to-square-solid.svg" height="18" /></a>
+                                <a asp-area="" asp-controller="Tasks" asp-action="Delete" asp-route-id="@item2.Id" style="margin-left: .5em;"><img src="~/trash-can-solid.svg" height="17" /></a>
                             </div>
                         </div>
                         <div class="row">
@@ -109,8 +109,8 @@
                             {
                                 <div class="col-5 note">
                                     <div class="text-right">
-                                        <a asp-area="" asp-controller="Notes" asp-action="Edit" style=""><img src="~/pen-to-square-solid.svg" height="18" /></a>
-                                        <a asp-area="" asp-controller="Notes" asp-action="Delete" style="margin-left: .5em;"><img src="~/trash-can-solid.svg" height="17" /></a>
+                                        <a asp-area="" asp-controller="Notes" asp-action="Edit" asp-route-id="@item3.Id"><img src="~/pen-to-square-solid.svg" height="18" /></a>
+                                        <a asp-area="" asp-controller="Notes" asp-action="Delete" asp-route-id="@item3.Id" style="margin-left: .5em;"><img src="~/trash-can-solid.svg" height="17" /></a>
                                     </div>
                                     <h4 style="display: inline;">@item3.Title</h4>
                                     <p>@item3.Note1</p>
