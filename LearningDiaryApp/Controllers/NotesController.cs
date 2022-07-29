@@ -46,9 +46,10 @@ namespace LearningDiaryApp.Controllers
         }
 
         // GET: Notes/Create
-        public IActionResult Create()
+        [Route("/Notes/Create/{taskId}")]
+        public IActionResult Create(int? taskId)
         {
-            ViewData["TaskId"] = new SelectList(_context.Task, "Id", "Id");
+            ViewData["TaskId"] = taskId;
             return View();
         }
 
@@ -57,16 +58,15 @@ namespace LearningDiaryApp.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,TaskId,Note1")] Note note)
+        public async Task<IActionResult> CreateNote([Bind("Id,Title,TaskId,Note1")] Note note)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(note);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
             }
-            ViewData["TaskId"] = new SelectList(_context.Task, "Id", "Id", note.TaskId);
-            return View(note);
+            return NotFound();
         }
 
         // GET: Notes/Edit/5
@@ -116,7 +116,7 @@ namespace LearningDiaryApp.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
             }
             ViewData["TaskId"] = new SelectList(_context.Task, "Id", "Id", note.TaskId);
             return View(note);
@@ -149,7 +149,7 @@ namespace LearningDiaryApp.Controllers
             var note = await _context.Note.FindAsync(id);
             _context.Note.Remove(note);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Home");
         }
 
         private bool NoteExists(int id)

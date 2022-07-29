@@ -35,7 +35,7 @@
         <div class="container topic" id="topicList">
             <div class="row">
                 <div class="col">
-                    <a class="btn btn-secondary addButt" id="tasButt" asp-area="" asp-controller="Tasks" asp-action="Create"  asp-route-id="@item.Id">+Task</a>
+                    <a class="btn btn-secondary addButt" id="tasButt" asp-area="" asp-controller="Tasks" asp-action="Create" asp-route-id="@item.Id">+Task</a>
                 </div>
                 <div class="col text-right">
                     <a asp-area="" asp-controller="Topics" asp-action="Edit" asp-route-id="@item.Id"><img src="~/pen-to-square-solid.svg" height="18"/></a>
@@ -80,7 +80,7 @@
                     <div class="container task">
                         <div class="row">
                             <div class="col">
-                                <a class="btn btn-secondary addButt" id="notButt" asp-area="" asp-controller="Notes" asp-action="Create">+Note</a>
+                                <a class="btn btn-secondary addButt" id="notButt" asp-area="" asp-controller="Notes" asp-action="Create" asp-route-id="@item2.Id">+Note</a>
                             </div>
                             <div class="col text-right">
                                 <a asp-area="" asp-controller="Tasks" asp-action="Edit" asp-route-id="@item2.Id"><img src="~/pen-to-square-solid.svg" height="18" /></a>

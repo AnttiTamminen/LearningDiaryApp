@@ -46,9 +46,10 @@ namespace LearningDiaryApp.Controllers
         }
 
         // GET: Tasks/Create
-        public IActionResult Create()
+        [Route("/Tasks/Create/{topicId}")]
+        public IActionResult Create(int? topicId)
         {
-            ViewData["TopicId"] = new SelectList(_context.Topic, "Id", "Id");
+            ViewData["TopicId"] = topicId;
             return View();
         }
 
@@ -57,16 +58,15 @@ namespace LearningDiaryApp.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,Deadline,Priority,Done,TopicId")] Models.Task task)
+        public async Task<IActionResult> CreateTask([Bind("Id,Title,Description,Deadline,Priority,Done,TopicId")] Models.Task task)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(task);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
             }
-            ViewData["TopicId"] = new SelectList(_context.Topic, "Id", "Id", task.TopicId);
-            return View(task);
+            return NotFound();
         }
 
         // GET: Tasks/Edit/5
@@ -116,7 +116,7 @@ namespace LearningDiaryApp.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
             }
             ViewData["TopicId"] = new SelectList(_context.Topic, "Id", "Id", task.TopicId);
             return View(task);
@@ -149,7 +149,7 @@ namespace LearningDiaryApp.Controllers
             var task = await _context.Task.FindAsync(id);
             _context.Task.Remove(task);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Home");
         }
 
         private bool TaskExists(int id)
