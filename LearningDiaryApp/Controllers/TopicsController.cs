@@ -60,9 +60,9 @@ namespace LearningDiaryApp.Controllers
             {
                 _context.Add(topic);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
             }
-            return View(topic);
+            return NotFound();
         }
 
         // GET: Topics/Edit/5
@@ -111,9 +111,9 @@ namespace LearningDiaryApp.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
             }
-            return View(topic);
+            return NotFound();
         }
 
         // GET: Topics/Delete/5
@@ -142,7 +142,7 @@ namespace LearningDiaryApp.Controllers
             var topic = await _context.Topic.FindAsync(id);
             _context.Topic.Remove(topic);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Home");
         }
 
         private bool TopicExists(int id)

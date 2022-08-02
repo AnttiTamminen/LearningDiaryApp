@@ -2,6 +2,7 @@
 
 @{ ViewData["Title"] = "Home Page"; }
 
+
 <div class="container-fluid homeheader" >
     <div class="row">
         <div class="col">
@@ -9,15 +10,26 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-4"></div>
         <div class="dropdown col text-center">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort Topics by</button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" onclick="sortTopics(Title)">Title</a>
-                <a class="dropdown-item" onclick="sortTopics(TSpent)">Time spent</a>
-                <a class="dropdown-item" onclick="sortTopics(TMaster)">Time to master</a>
-                <a class="dropdown-item" onclick="sortTopics(Prog)">Progress</a>
-                <a class="dropdown-item" onclick="sortTopics(SDate)">Start date</a>
-                <a class="dropdown-item" onclick="sortTopics(CDate)">Completion date</a>
+                <a class="dropdown-item" onclick="sortTopics('Title')">Title</a>
+                <a class="dropdown-item" onclick="sortTopics('Desc')">Description</a>
+                <a class="dropdown-item" onclick="sortTopics('Source')">Source</a>
+                <a class="dropdown-item" onclick="sortTopics('TSpent')">Time spent</a>
+                <a class="dropdown-item" onclick="sortTopics('TMaster')">Time to master</a>
+                <a class="dropdown-item" onclick="sortTopics('Prog')">Progress</a>
+                <a class="dropdown-item" onclick="sortTopics('SDate')">Start date</a>
+                <a class="dropdown-item" onclick="sortTopics('CDate')">Completion date</a>
+            </div>
+        </div>
+        <div class="dropdown col">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search</button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" onclick="searchTopic()">Search Topic</a> @*js function that makes popup that gives options then the function hides all else but search results and gives message if not found also add "reset search" button to top*@
+                <a class="dropdown-item" onclick="searchTask()">Search Task</a> @*js function that makes popup that gives options then the function hides all else but search results and gives message if not found also add "reset search" button to top*@
+                <a class="dropdown-item" onclick="searchNote()">Search Note</a> @*js function that makes popup that gives options then the function hides all else but search results and gives message if not found also add "reset search" button to top*@
             </div>
         </div>
     </div>
@@ -28,51 +40,49 @@
     </div>
 </div>
 
-@if (Model != null)
-{
-    foreach (Topic item in Model.Topics)
+<div id="allTop">
+    @if (Model != null)
     {
-        <div class="container topic" id="topicList">
-            <div class="row">
-                <div class="col">
-                    <a class="btn btn-secondary addButt" id="tasButt" asp-area="" asp-controller="Tasks" asp-action="Create" asp-route-id="@item.Id">+Task</a>
-                </div>
-                <div class="col text-right">
-                    <a asp-area="" asp-controller="Topics" asp-action="Edit" asp-route-id="@item.Id"><img src="~/pen-to-square-solid.svg" height="18"/></a>
-                    <a asp-area="" asp-controller="Topics" asp-action="Delete" asp-route-id="@item.Id" style="margin-left: .5em;"><img src="~/trash-can-solid.svg" height="17"/></a>
-                </div>
+        foreach (Topic item in Model.Topics)
+        {
+            <div class="container topic" id="topicList">
+                <div class="row">
+                    <div class="col">
+                        <a class="btn btn-secondary addButt" id="tasButt" asp-area="" asp-controller="Tasks" asp-action="Create" asp-route-id="@item.Id">+Task</a>
+                    </div>
+                    <div class="col text-right">
+                        <a asp-area="" asp-controller="Topics" asp-action="Edit" asp-route-id="@item.Id"><img src="~/pen-to-square-solid.svg" height="18" /></a>
+                        <a asp-area="" asp-controller="Topics" asp-action="Delete" asp-route-id="@item.Id" style="margin-left: .5em;"><img src="~/trash-can-solid.svg" height="17" /></a>
+                    </div>
                 </div>
                 <div class="container">
                     <div class="row">
-                        <div class="col">
-                            <h2 id="itemHead">@item.Title</h2>
+                        <div class="col-3">
+                            <h2>@item.Title</h2>
                         </div>
                         <div class="col">
-                            <p>Description: @item.Description</p>
+                            <span>Description: </span><span id="ToDesc">@item.Description</span>
                         </div>
                         <div class="col">
-                            <p>Source: @item.Source</p>
+                            <span>Source: </span><span id="ToSource">@item.Source</span>
+                        </div>
+                        <div class="col">
+                            <span>In progress: </span><span id="ToProg">@item.InProgress</span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <p>TimeToMaster: @item.TimeToMaster</p>
+                            <span>Time estimate: </span><span id="ToTMaster">@item.TimeToMaster</span>
                         </div>
                         <div class="col">
-                            <p>TimeSpent: @item.TimeSpent</p>
+                            <span>Time spent: </span><span id="ToTSpent">@item.TimeSpent</span>
                         </div>
                         <div class="col">
-                            <p>StartLearningDate: @item.StartLearningDate</p>
+                            <span>Started on: </span><span id="ToSDate">@item.StartLearningDate</span>
                         </div>
                         <div class="col">
-                            <p>InProgress: @item.InProgress</p>
+                            <span>Completed on: </span><span id="ToCDate">@item.CompletionDate</span>
                         </div>
-                        @if (item.InProgress == false)
-                        {
-                            <div class="col">
-                                <p>CompletionDate: @item.CompletionDate</p>
-                            </div>
-                        }
                     </div>
                 </div>
                 @foreach (var item2 in item.Tasks)
@@ -89,19 +99,19 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <h3 id="itemHead">@item2.Title</h3>
+                                <h3>@item2.Title</h3>
                             </div>
                             <div class="col">
-                                <p>Description: @item2.Description</p>
+                                <span>Description: </span><span id="TaDesc">@item2.Description</span>
                             </div>
                             <div class="col">
-                                <p>Deadline: @item2.Deadline</p>
+                                <span>Deadline: </span><span id="TaDead">@item2.Deadline</span>
                             </div>
                             <div class="col">
-                                <p>Priority: @item2.Priority</p>
+                                <span>Priority: </span><span id="TaPrio">@item2.Priority</span>
                             </div>
                             <div class="col">
-                                <p>Done: @item2.Done</p>
+                                <span>Done: </span><span id="TaDone">@item2.Done</span>
                             </div>
                         </div>
                         <div class="row">
@@ -113,31 +123,35 @@
                                         <a asp-area="" asp-controller="Notes" asp-action="Delete" asp-route-id="@item3.Id" style="margin-left: .5em;"><img src="~/trash-can-solid.svg" height="17" /></a>
                                     </div>
                                     <h4 style="display: inline;">@item3.Title</h4>
-                                    <p>@item3.Note1</p>
+                                    <p id="nCont">@item3.Note1</p>
                                 </div>
                             }
                         </div>
                     </div>
                 }
             </div>
+        }
     }
-}
-else
-{
-    <div class="container" id="missingMesg">
-        <div class="row">
-            <div class="col text-center">
-                <h2 class="missing">Diary is empty/missing :(</h2>
+    else
+    {
+        <div class="container" id="missingMesg">
+            <div class="row">
+                <div class="col text-center">
+                    <h2 class="missing">Diary is empty/missing :(</h2>
+                </div>
             </div>
         </div>
-    </div>
-}
-
-<div class="container">
-    <div class="row">
-        <div class="col"></div>
-        <p> </p>
-    </div>
+    }
 </div>
+<br>
+<script>
+    var smallInfoList = document.getElementsByTagName('span');
+
+    for (var i = 0; i < smallInfoList.length; i++) {
+        if (smallInfoList[i].innerText == "") {
+            smallInfoList[i].innerText = "ø";
+        }
+    }
+</script>
 
 
