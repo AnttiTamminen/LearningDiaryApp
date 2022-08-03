@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Learning Diary</title>
-    <link rel="icon" href="book-solid.svg">
+    <link rel="icon" href="~/book-solid.svg">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -17,80 +17,70 @@
         <button class="btn btn-primary col-1" Id="givePass" onclick="setPassword()" style="margin-left: 4em; margin-top: 1em; width: 4em; padding: .2em;">Enter</button>
     </div>
     <div id="allCont">
-    <header class="sticky-top">
-        <nav class="row">
-            <div class="col-1">
-                <a class="btn btn-primary" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-            </div>
-            <div class="col-8">
-                <h3 class="text-center">Learning Diary 5000</h3>
-            </div>
-            <div class="col-1">
-                <a class="btn btn-primary" href="#" role="button" onclick="showInfo()">Info</a>
-            </div>
-            <div class="col-1">
-                <a class="btn btn-primary" href="#" role="button" onclick="logout()">Logout</a>
-            </div>
-        </nav>
-    </header>
-    <main role="main" id="maini">
-        @RenderBody()
-    </main>
+        <header class="sticky-top">
+            <nav class="row">
+                <div class="col-1">
+                    <a class="btn btn-primary" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                </div>
+                <div class="col-8">
+                    <h3 class="text-center">Learning Diary 5000</h3>
+                </div>
+                <div class="col-1">
+                    <a class="btn btn-primary" href="#" role="button" onclick="showInfo()">Info</a>
+                </div>
+                <div class="col-1">
+                    <a class="btn btn-primary" href="#" role="button" onclick="logout()">Logout</a>
+                </div>
+            </nav>
+        </header>
 
-    <div class="container" id="infoText" style="display: none;">
-        <div class="jumbotron text-center" id="intro">
-            <h3>Learning diary app is designed to help you in your learning by keeping all your notes organized and easy to use.</h3>
-        </div>
-        <div class="row">
-            <div class="col-2"></div>
-            <div class="col-4">
-                <h3>Main page</h3>
-                <p>From the mainpage you can see all of the content in the diary. You can sort the order of the list by topic from the drop down menu at top of the list.</p>
+        <div class="container" id="infoText" style="display: none;">
+            <div class="jumbotron text-center" id="intro">
+                <h3>Learning diary 5000 is designed to help you in your learning.</h3>
             </div>
-            <div class="col-4">
-                <h3>Modify</h3>
-                <p>By clicking the button of desired entry in the homepage list or in search results, you can modify topic, task or note of your choosing.</p>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-4">
+                    <h3>Main page</h3>
+                    <p>From the mainpage you can see all of the content in the diary. You can sort the order of the list by topic from the drop down menu at top of the list.</p>
+                </div>
+                <div class="col-4">
+                    <h3>Modify/Create/delete</h3>
+                    <p>By clicking the button of desired entry in the homepage list, you can modify/create/delete topic, task or note of your choosing.</p>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-2"></div>
-            <div class="col-4">
-                <h3>Search</h3>
-                <p>By clicking the top row menu you can choose to search topics, tasks or notes. You can use any of the properties as search term. Search results give all the entries that include search words.</p>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-4">
+                    <h3>Search</h3>
+                    <p>By clicking the top row menu you can choose to search topics, tasks or notes. Search results give all the entries that include search words.</p>
+                </div>
+                <div class="col-4">
+                    <h3>Log out</h3>
+                    <p>You can log out from top right corner of the page. Note that you can not change or retrieve the password you have.</p>
+                </div>
             </div>
-            <div class="col-4">
-                <h3>Delete</h3>
-                <p>By clicking the button of desired entry in the homepage list or in search results, you can delete topic, task or note of your choosing. Notice that deleting topic removes also its tasks and notes and removing task deletes also its notes.</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-2"></div>
-            <div class="col-4">
-                <h3>Create</h3>
-                <p>From the top row menu you can select to create a new entry to the diary. If you want to create task or note, you need to have existing topic to create these to.</p>
-            </div>
-            <div class="col-4">
-                <h3>Log out</h3>
-                <p>You can log out from top right corner of the page. Note that you can not change or retrieve the password you have.</p>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col">
+                    <a class="btn btn-primary" id="ok" href="#" role="button" onclick="hideInfo()">Back</a>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-2"></div>
-            <div class="col">
-                <a class="btn btn-primary" id="ok" href="#" role="button" onclick="hideInfo()">Back</a>
+
+        <main role="main" id="maini">
+            @RenderBody()
+        </main>
+
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2022 - LearningDiaryApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
             </div>
-        </div>
+        </footer>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @RenderSection("Scripts", required: false)
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - LearningDiaryApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
-</div>
 </body>
 </html>

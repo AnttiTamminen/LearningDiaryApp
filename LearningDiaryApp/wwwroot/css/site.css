@@ -158,3 +158,18 @@ dd {
     display: block;
     margin: 0 auto;
 }
+
+.noteBold {
+    font-weight: 900;
+}
+
+.smallHed {
+    font-weight: 900;
+}
+
+.progRadio {
+    display: inline;
+    border: 0;
+    width: 1.2em;
+    height: 1.2em;
+}

@@ -29,12 +29,22 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Priority" class="control-label"></label>
-                    <input asp-for="Priority" class="form-control" />
+                    <br />
+                    <input id="progRadio111" type="radio" value="Low" asp-for="Priority" class="form-control progRadio" />
+                    <label for="progRadio111">Low</label>
+                    <input id="progRadio222" type="radio" value="Medium" asp-for="Priority" class="form-control progRadio" />
+                    <label for="progRadio222">Medium</label>
+                    <input id="progRadio333" type="radio" value="High" asp-for="Priority" class="form-control progRadio" />
+                    <label for="progRadio333">High</label>
                     <span asp-validation-for="Priority" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Done" class="control-label"></label>
-                    <input asp-for="Done" class="form-control" />
+                    <br />
+                    <input id="progRadio11" type="radio" value="true" asp-for="Done" class="form-control progRadio" />
+                    <label for="progRadio11">Yes</label>
+                    <input id="progRadio22" type="radio" value="false" asp-for="Done" class="form-control progRadio" />
+                    <label for="progRadio22">No</label>
                     <span asp-validation-for="Done" class="text-danger"></span>
                 </div>
                 <div class="form-group">

@@ -45,7 +45,11 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="InProgress" class="control-label">In progress</label>
-                    <input asp-for="InProgress" class="form-control" />
+                    <br />
+                    <input id="progRadio1" type="radio" value="true" asp-for="InProgress" class="form-control progRadio" />
+                    <label for="progRadio1">Yes</label>
+                    <input id="progRadio2" type="radio" value="false" asp-for="InProgress" class="form-control progRadio" />
+                    <label for="progRadio2">No</label>
                     <span asp-validation-for="InProgress" class="text-danger"></span>
                 </div>
                 <div class="form-group">

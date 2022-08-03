@@ -61,27 +61,28 @@
                             <h2>@item.Title</h2>
                         </div>
                         <div class="col">
-                            <span>Description: </span><span id="ToDesc">@item.Description</span>
+                            <span class="smallHed">Description: </span><span id="ToDesc">@item.Description</span>
                         </div>
                         <div class="col">
-                            <span>Source: </span><span id="ToSource">@item.Source</span>
+                            <span class="smallHed">Source: </span><span id="ToSource">@item.Source</span>
                         </div>
                         <div class="col">
-                            <span>In progress: </span><span id="ToProg">@item.InProgress</span>
+                            <span class="smallHed">In progress: </span><span id="ToProg">@item.InProgress</span>
                         </div>
                     </div>
+                    <br />
                     <div class="row">
                         <div class="col">
-                            <span>Time estimate: </span><span id="ToTMaster">@item.TimeToMaster</span>
+                            <span class="smallHed">Time estimate: </span><span id="ToTMaster">@item.TimeToMaster</span>
                         </div>
                         <div class="col">
-                            <span>Time spent: </span><span id="ToTSpent">@item.TimeSpent</span>
+                            <span class="smallHed">Time spent: </span><span id="ToTSpent">@item.TimeSpent</span>
                         </div>
                         <div class="col">
-                            <span>Started on: </span><span id="ToSDate">@item.StartLearningDate</span>
+                            <span class="smallHed">Started on: </span><span id="ToSDate">@item.StartLearningDate</span>
                         </div>
                         <div class="col">
-                            <span>Completed on: </span><span id="ToCDate">@item.CompletionDate</span>
+                            <span class="smallHed">Completed on: </span><span id="ToCDate">@item.CompletionDate</span>
                         </div>
                     </div>
                 </div>
@@ -102,16 +103,16 @@
                                 <h3>@item2.Title</h3>
                             </div>
                             <div class="col">
-                                <span>Description: </span><span id="TaDesc">@item2.Description</span>
+                                <span class="smallHed">Description: </span><span id="TaDesc">@item2.Description</span>
                             </div>
                             <div class="col">
-                                <span>Deadline: </span><span id="TaDead">@item2.Deadline</span>
+                                <span class="smallHed">Deadline: </span><span id="TaDead">@item2.Deadline</span>
                             </div>
                             <div class="col">
-                                <span>Priority: </span><span id="TaPrio">@item2.Priority</span>
+                                <span class="smallHed">Priority: </span><span id="TaPrio">@item2.Priority</span>
                             </div>
                             <div class="col">
-                                <span>Done: </span><span id="TaDone">@item2.Done</span>
+                                <span class="smallHed">Done: </span><span id="TaDone">@item2.Done</span>
                             </div>
                         </div>
                         <div class="row">
@@ -122,7 +123,7 @@
                                         <a asp-area="" asp-controller="Notes" asp-action="Edit" asp-route-id="@item3.Id"><img src="~/pen-to-square-solid.svg" height="18" /></a>
                                         <a asp-area="" asp-controller="Notes" asp-action="Delete" asp-route-id="@item3.Id" style="margin-left: .5em;"><img src="~/trash-can-solid.svg" height="17" /></a>
                                     </div>
-                                    <h4 style="display: inline;">@item3.Title</h4>
+                                    <h4 class="noteBold" style="display: inline;">@item3.Title</h4>
                                     <p id="nCont">@item3.Note1</p>
                                 </div>
                             }
