@@ -19,32 +19,6 @@ namespace LearningDiaryApp.Controllers
             _context = context;
         }
 
-        // GET: Notes
-        public async Task<IActionResult> Index()
-        {
-            var learningDiaryAppContext = _context.Note.Include(n => n.Task);
-            return View(await learningDiaryAppContext.ToListAsync());
-        }
-
-        // GET: Notes/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var note = await _context.Note
-                .Include(n => n.Task)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (note == null)
-            {
-                return NotFound();
-            }
-
-            return View(note);
-        }
-
         // GET: Notes/Create
         [Route("/Notes/Create/{taskId}")]
         public IActionResult Create(int? taskId)
