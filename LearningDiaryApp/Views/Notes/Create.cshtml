@@ -5,32 +5,33 @@
     var taId = ViewData["TaskId"] as int?;
 }
 
-<h1>Create</h1>
+<div class="text-center">
+    <h1>Create Task for Task: @taId</h1>
 
-<h4>Note</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="CreateNote">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input asp-for="TaskId" class ="form-control" value="@taId" style="display: none;"/>
-            </div>
-            <div class="form-group">
-                <label asp-for="Note1" class="control-label"></label>
-                <input asp-for="Note1" class="form-control" />
-                <span asp-validation-for="Note1" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-                <a asp-controller="Home" asp-action="Index">Back</a>
-            </div>
-        </form>
+    <hr />
+    <div class="row">
+        <div class="col">
+            <form asp-action="CreateNote">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="TaskId" class ="form-control" value="@taId" style="display: none;"/>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Note1" class="control-label"></label>
+                    <input asp-for="Note1" class="form-control" />
+                    <span asp-validation-for="Note1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <a asp-controller="Home" asp-action="Index">Back</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 

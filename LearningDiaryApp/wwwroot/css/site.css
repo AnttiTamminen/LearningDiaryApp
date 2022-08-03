@@ -142,3 +142,19 @@ h4 {
     margin-top: 1.5em;
     margin-bottom: 1em;
 }
+
+.form-control {
+    max-width: 35em;
+    display: block;
+    margin: 0 auto;
+}
+
+dt {
+    display: block;
+    margin: 0 auto;
+}
+
+dd {
+    display: block;
+    margin: 0 auto;
+}

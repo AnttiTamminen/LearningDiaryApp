@@ -66,7 +66,7 @@ namespace LearningDiaryApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "Home");
             }
-            return NotFound();
+            return RedirectToAction("Create", "Tasks");
         }
 
         // GET: Tasks/Edit/5

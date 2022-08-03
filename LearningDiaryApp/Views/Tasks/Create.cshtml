@@ -4,47 +4,48 @@
     ViewData["Title"] = "Create Task";
     var toId = ViewData["TopicId"] as int?;
 }
-<h1>Create</h1>
+<div class="text-center">
+    <h1>Create Task for Topic: @toId</h1>
 
-<h4>Task</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="CreateTask">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Deadline" class="control-label"></label>
-                <input asp-for="Deadline" class="form-control" />
-                <span asp-validation-for="Deadline" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Priority" class="control-label"></label>
-                <input asp-for="Priority" class="form-control" />
-                <span asp-validation-for="Priority" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Done" class="control-label"></label>
-                <input asp-for="Done" class="form-control" />
-                <span asp-validation-for="Done" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input asp-for="TopicId" class ="form-control" value="@toId" style="display: none;"/>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-                <a asp-controller="Home" asp-action="Index">Back</a>
-            </div>
-        </form>
+    <hr />
+    <div class="row">
+        <div class="col">
+            <form asp-action="CreateTask">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Deadline" class="control-label"></label>
+                    <input asp-for="Deadline" class="form-control" />
+                    <span asp-validation-for="Deadline" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Priority" class="control-label"></label>
+                    <input asp-for="Priority" class="form-control" />
+                    <span asp-validation-for="Priority" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Done" class="control-label"></label>
+                    <input asp-for="Done" class="form-control" />
+                    <span asp-validation-for="Done" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="TopicId" class ="form-control" value="@toId" style="display: none;"/>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <a asp-controller="Home" asp-action="Index">Back</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 

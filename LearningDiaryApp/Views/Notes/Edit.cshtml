@@ -4,35 +4,35 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<div class="text-center">
+    <h1>Edit Note: @Html.DisplayFor(model => model.Title)</h1>
 
-<h4>Note</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TaskId" class="control-label"></label>
-                <select asp-for="TaskId" class="form-control" asp-items="ViewBag.TaskId"></select>
-                <span asp-validation-for="TaskId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Note1" class="control-label"></label>
-                <input asp-for="Note1" class="form-control" />
-                <span asp-validation-for="Note1" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-                <a asp-controller="Home" asp-action="Index">Back</a>
-            </div>
-        </form>
+    <hr />
+    <div class="row">
+        <div class="col">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <select asp-for="TaskId" class="form-control" asp-items="ViewBag.TaskId" style="display: none;"></select>
+                    <span asp-validation-for="TaskId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Note1" class="control-label">Note text</label>
+                    <input asp-for="Note1" class="form-control" />
+                    <span asp-validation-for="Note1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <a asp-controller="Home" asp-action="Index">Back</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 

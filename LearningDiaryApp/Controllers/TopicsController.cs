@@ -62,7 +62,7 @@ namespace LearningDiaryApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "Home");
             }
-            return NotFound();
+            return View();
         }
 
         // GET: Topics/Edit/5
@@ -113,7 +113,7 @@ namespace LearningDiaryApp.Controllers
                 }
                 return RedirectToAction("Index", "Home");
             }
-            return NotFound();
+            return View(topic);
         }
 
         // GET: Topics/Delete/5
