@@ -173,3 +173,15 @@ dd {
     width: 1.2em;
     height: 1.2em;
 }
+
+#infoText {
+    background: lightpink;
+}
+
+.jumbotron {
+    background-color: lightcoral;
+}
+
+.dropdown-menu {
+    background: rgb(100, 211, 189);
+}

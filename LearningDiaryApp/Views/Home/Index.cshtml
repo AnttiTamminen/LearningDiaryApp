@@ -27,9 +27,23 @@
         <div class="dropdown col">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search</button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" onclick="searchTopic()">Search Topic</a> @*js function that makes popup that gives options then the function hides all else but search results and gives message if not found also add "reset search" button to top*@
-                <a class="dropdown-item" onclick="searchTask()">Search Task</a> @*js function that makes popup that gives options then the function hides all else but search results and gives message if not found also add "reset search" button to top*@
-                <a class="dropdown-item" onclick="searchNote()">Search Note</a> @*js function that makes popup that gives options then the function hides all else but search results and gives message if not found also add "reset search" button to top*@
+                <br />
+                <form asp-controller="Home" asp-action="TopicSearchResult" method="get">
+                    <input type="text" name="searchTerm" />
+                    <input type="submit" value="Topics" class="btn-secondary" />
+                </form>
+                <br />
+                <form asp-controller="Home" asp-action="TaskSearchResult" method="get">
+                    <input type="text" name="searchTerm" />
+                    <input type="submit" value="Tasks" class="btn-secondary" />
+                </form>
+                <br />
+                <form asp-controller="Home" asp-action="NoteSearchResult" method="get">
+                    <input type="text" name="searchTerm" />
+                    <input type="submit" value="Notes" class="btn-secondary" />
+                </form>
+                <br />
+                <a class="btn btn-primary" asp-area="" asp-controller="Home" asp-action="Index">Clear search</a>
             </div>
         </div>
     </div>

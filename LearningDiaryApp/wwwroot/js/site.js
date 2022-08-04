@@ -1,9 +1,11 @@
 ﻿function showInfo() {
-    document.getElementById("infoText").style.display = "block";
-}
-
-function hideInfo() {
-    document.getElementById("infoText").style.display = "none";
+    if (document.getElementById("infoText").style.display == "block") {
+        document.getElementById("infoText").style.display = "none";
+        document.getElementById("infoButt").style.background = '';
+    } else {
+        document.getElementById("infoText").style.display = "block";
+        document.getElementById("infoButt").style.background = 'red';
+    }
 }
 
 function loginPrompt() {
@@ -146,4 +148,15 @@ function sortTopics(option) {
     for (var i = 0; i < itemsArr.length; i++) {
         list.appendChild(itemsArr[i]);
     }
+}
+
+var inputs = document.getElementsByClassName("form-control");
+for (var i = 0; i < inputs.length; i++) {
+    inputs[i].addEventListener('focus', (event) => {
+        event.target.style.background = 'lightgreen';
+    });
+
+    inputs[i].addEventListener('blur', (event) => {
+        event.target.style.background = '';
+    });
 }
