@@ -29,21 +29,21 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <br />
                 <form asp-controller="Home" asp-action="TopicSearchResult" method="get">
-                    <input type="text" name="searchTerm" />
-                    <input type="submit" value="Topics" class="btn-secondary" />
+                    <input type="text" name="searchTerm" class="form-control" />
+                    <input type="submit" value="Topics" class="btn-secondary searchAction" />
                 </form>
                 <br />
                 <form asp-controller="Home" asp-action="TaskSearchResult" method="get">
-                    <input type="text" name="searchTerm" />
-                    <input type="submit" value="Tasks" class="btn-secondary" />
+                    <input type="text" name="searchTerm" class="form-control" />
+                    <input type="submit" value="Tasks" class="btn-secondary searchAction" />
                 </form>
                 <br />
                 <form asp-controller="Home" asp-action="NoteSearchResult" method="get">
-                    <input type="text" name="searchTerm" />
-                    <input type="submit" value="Notes" class="btn-secondary" />
+                    <input type="text" name="searchTerm" class="form-control" />
+                    <input type="submit" value="Notes" class="btn-secondary searchAction" />
                 </form>
                 <br />
-                <a class="btn btn-primary" asp-area="" asp-controller="Home" asp-action="Index">Clear search</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Home" asp-action="Index" id="clearButt">Clear search</a>
             </div>
         </div>
     </div>
@@ -55,7 +55,7 @@
 </div>
 
 <div id="allTop">
-    @if (Model != null)
+    @if (Model.Topics != null && Model.Topics.Any())
     {
         foreach (Topic item in Model.Topics)
         {
@@ -65,8 +65,8 @@
                         <a class="btn btn-secondary addButt" id="tasButt" asp-area="" asp-controller="Tasks" asp-action="Create" asp-route-id="@item.Id">+Task</a>
                     </div>
                     <div class="col text-right">
-                        <a asp-area="" asp-controller="Topics" asp-action="Edit" asp-route-id="@item.Id"><img src="~/pen-to-square-solid.svg" height="18" /></a>
-                        <a asp-area="" asp-controller="Topics" asp-action="Delete" asp-route-id="@item.Id" style="margin-left: .5em;"><img src="~/trash-can-solid.svg" height="17" /></a>
+                        <a asp-area="" asp-controller="Topics" asp-action="Edit" asp-route-id="@item.Id"><img src="~/pen-to-square-solid.svg" height="18"/></a>
+                        <a asp-area="" asp-controller="Topics" asp-action="Delete" asp-route-id="@item.Id" style="margin-left: .5em;"><img src="~/trash-can-solid.svg" height="17"/></a>
                     </div>
                 </div>
                 <div class="container">
@@ -84,7 +84,7 @@
                             <span class="smallHed">In progress: </span><span id="ToProg">@item.InProgress</span>
                         </div>
                     </div>
-                    <br />
+                    <br/>
                     <div class="row">
                         <div class="col">
                             <span class="smallHed">Time estimate: </span><span id="ToTMaster">@item.TimeToMaster</span>
@@ -108,8 +108,8 @@
                                 <a class="btn btn-secondary addButt" id="notButt" asp-area="" asp-controller="Notes" asp-action="Create" asp-route-id="@item2.Id">+Note</a>
                             </div>
                             <div class="col text-right">
-                                <a asp-area="" asp-controller="Tasks" asp-action="Edit" asp-route-id="@item2.Id"><img src="~/pen-to-square-solid.svg" height="18" /></a>
-                                <a asp-area="" asp-controller="Tasks" asp-action="Delete" asp-route-id="@item2.Id" style="margin-left: .5em;"><img src="~/trash-can-solid.svg" height="17" /></a>
+                                <a asp-area="" asp-controller="Tasks" asp-action="Edit" asp-route-id="@item2.Id"><img src="~/pen-to-square-solid.svg" height="18"/></a>
+                                <a asp-area="" asp-controller="Tasks" asp-action="Delete" asp-route-id="@item2.Id" style="margin-left: .5em;"><img src="~/trash-can-solid.svg" height="17"/></a>
                             </div>
                         </div>
                         <div class="row">
@@ -134,8 +134,8 @@
                             {
                                 <div class="col-5 note">
                                     <div class="text-right">
-                                        <a asp-area="" asp-controller="Notes" asp-action="Edit" asp-route-id="@item3.Id"><img src="~/pen-to-square-solid.svg" height="18" /></a>
-                                        <a asp-area="" asp-controller="Notes" asp-action="Delete" asp-route-id="@item3.Id" style="margin-left: .5em;"><img src="~/trash-can-solid.svg" height="17" /></a>
+                                        <a asp-area="" asp-controller="Notes" asp-action="Edit" asp-route-id="@item3.Id"><img src="~/pen-to-square-solid.svg" height="18"/></a>
+                                        <a asp-area="" asp-controller="Notes" asp-action="Delete" asp-route-id="@item3.Id" style="margin-left: .5em;"><img src="~/trash-can-solid.svg" height="17"/></a>
                                     </div>
                                     <h4 class="noteBold" style="display: inline;">@item3.Title</h4>
                                     <p id="nCont">@item3.Note1</p>
@@ -152,7 +152,7 @@
         <div class="container" id="missingMesg">
             <div class="row">
                 <div class="col text-center">
-                    <h2 class="missing">Diary is empty/missing :(</h2>
+                    <h2 class="missing">No items found :(</h2>
                 </div>
             </div>
         </div>
