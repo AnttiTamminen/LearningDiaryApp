@@ -41,97 +41,81 @@ function sortTopics(option) {
         }
     }
     switch (option) {
-        case "Title":
-            itemsArr.sort(function(a, b) {
-                return a.children[1].firstElementChild.firstElementChild.firstElementChild.innerHTML ==
-                    b.children[1].children[0].children[0].children[0].innerHTML
-                    ? 0
-                    : (a.children[1].children[0].children[0].children[0].innerHTML >
-                        b.children[1].children[0].children[0].children[0].innerHTML
-                        ? 1
-                        : -1);
+    case "Title":
+        itemsArr.sort(function(a, b) {
+            return a.querySelector("#ToTitle").innerHTML === b.querySelector("#ToTitle").innerHTML
+                ? 0
+                : (a.querySelector("#ToTitle").innerHTML > b.querySelector("#ToTitle").innerHTML
+                    ? 1
+                    : -1);
             });
-            break;
+        break;
 
-        case "Desc":
-            itemsArr.sort(function(a, b) {
-                return a.children[1].firstElementChild.children[1].children[1].innerHTML ==
-                    b.children[1].firstElementChild.children[1].children[1].innerHTML
-                    ? 0
-                    : (a.children[1].firstElementChild.children[1].children[1].innerHTML >
-                        b.children[1].firstElementChild.children[1].children[1].innerHTML
-                        ? 1
-                        : -1);
+    case "Desc":
+        itemsArr.sort(function(a, b) {
+            return a.querySelector("#ToDesc").innerHTML === b.querySelector("#ToDesc").innerHTML
+                ? 0
+                : (a.querySelector("#ToDesc").innerHTML > b.querySelector("#ToDesc").innerHTML
+                    ? 1
+                    : -1);
             });
-            break;
+        break;
 
-        case "Source":
-            itemsArr.sort(function (a, b) {
-                return a.children[1].firstElementChild.children[2].children[1].innerHTML ==
-                    b.children[1].firstElementChild.children[2].children[1].innerHTML
-                    ? 0
-                    : (a.children[1].firstElementChild.children[2].children[1].innerHTML >
-                        b.children[1].firstElementChild.children[2].children[1].innerHTML
-                        ? 1
-                        : -1);
+    case "Source":
+        itemsArr.sort(function(a, b) {
+            return a.querySelector("#ToSource").innerHTML === b.querySelector("#ToSource").innerHTML
+                ? 0
+                : (a.querySelector("#ToSource").innerHTML > b.querySelector("#ToSource").innerHTML
+                    ? 1
+                    : -1);
             });
-            break;
+        break;
 
         case "TSpent":
             itemsArr.sort(function (a, b) {
-                return a.children[1].children[1].children[1].children[1].innerHTML ==
-                    b.children[1].children[1].children[1].children[1].innerHTML
+                return Number(a.querySelector("#ToTSpent").innerHTML) === Number(b.querySelector("#ToTSpent").innerHTML)
                     ? 0
-                    : (a.children[1].children[1].children[1].children[1].innerHTML >
-                        b.children[1].children[1].children[1].children[1].innerHTML
+                    : (Number(a.querySelector("#ToTSpent").innerHTML) > Number(b.querySelector("#ToTSpent").innerHTML)
                         ? 1
                         : -1);
             });
-            break;
+        break;
 
-        case "TMaster":
-            itemsArr.sort(function (a, b) {
-                return a.children[1].children[1].firstElementChild.children[1].innerHTML ==
-                    b.children[1].children[1].firstElementChild.children[1].innerHTML
-                    ? 0
-                    : (a.children[1].children[1].firstElementChild.children[1].innerHTML >
-                        b.children[1].children[1].firstElementChild.children[1].innerHTML
-                        ? 1
-                        : -1);
+    case "TMaster":
+        itemsArr.sort(function(a, b) {
+            return Number(a.querySelector("#ToTMaster").innerHTML) === Number(b.querySelector("#ToTMaster").innerHTML)
+                ? 0
+                : (Number(a.querySelector("#ToTMaster").innerHTML) > Number(b.querySelector("#ToTMaster").innerHTML)
+                    ? 1
+                    : -1);
             });
-            break;
+        break;
 
-        case "Prog":
-            itemsArr.sort(function (a, b) {
-                return a.children[1].firstElementChild.children[3].children[1].innerHTML ==
-                    b.children[1].firstElementChild.children[3].children[1].innerHTML
-                    ? 0
-                    : (a.children[1].firstElementChild.children[3].children[1].innerHTML >
-                        b.children[1].firstElementChild.children[3].children[1].innerHTML
-                        ? 1
-                        : -1);
+    case "Prog":
+        itemsArr.sort(function(a, b) {
+            return a.querySelector("#ToProg").innerHTML === b.querySelector("#ToProg").innerHTML
+                ? 0
+                : (a.querySelector("#ToProg").innerHTML > b.querySelector("#ToProg").innerHTML
+                    ? 1
+                    : -1);
             });
-            break;
-
-        case "SDate":
-            itemsArr.sort(function (a, b) {
-                return a.children[1].children[1].children[2].children[1].innerHTML ==
-                    b.children[1].children[1].children[2].children[1].innerHTML
-                    ? 0
-                    : (a.children[1].children[1].children[2].children[1].innerHTML >
-                        b.children[1].children[1].children[2].children[1].innerHTML
-                        ? 1
-                        : -1);
+        break;
+    
+    case "SDate":
+        itemsArr.sort(function(a, b) {
+            return a.querySelector("#ToSDate").innerHTML === b.querySelector("#ToSDate").innerHTML
+                ? 0
+                : (a.querySelector("#ToSDate").innerHTML > b.querySelector("#ToSDate").innerHTML
+                    ? 1
+                    : -1);
             });
-            break;
-
-        case "CDate":
+        break;
+    
+    case "CDate":
             itemsArr.sort(function (a, b) {
-                return a.children[1].children[1].children[3].children[1].innerHTML ==
-                    b.children[1].children[1].children[3].children[1].innerHTML
+                return a.querySelector("#ToCDate").innerHTML === b.querySelector("#ToCDate").innerHTML
                     ? 0
-                    : (a.children[1].children[1].children[3].children[1].innerHTML >
-                        b.children[1].children[1].children[3].children[1].innerHTML
+                    : (a.querySelector("#ToCDate").innerHTML > b.querySelector("#ToCDate").innerHTML
                         ? 1
                         : -1);
             });
@@ -160,3 +144,4 @@ for (var i = 0; i < inputs.length; i++) {
         event.target.style.background = '';
     });
 }
+

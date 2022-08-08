@@ -72,7 +72,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-3">
-                            <h2>@item.Title</h2>
+                            <h2 id="ToTitle">@item.Title</h2>
                         </div>
                         <div class="col">
                             <span class="smallHed">Description: </span><span id="ToDesc">@item.Description</span>
@@ -93,10 +93,10 @@
                             <span class="smallHed">Time spent: </span><span id="ToTSpent">@item.TimeSpent</span>
                         </div>
                         <div class="col">
-                            <span class="smallHed">Started on: </span><span id="ToSDate">@item.StartLearningDate</span>
+                            <span class="smallHed">Started on (MM/dd/yyyy): </span><span id="ToSDate">@(item.StartLearningDate.HasValue ? item.StartLearningDate.Value.ToString("MM/dd/yyyy") : "")</span>
                         </div>
                         <div class="col">
-                            <span class="smallHed">Completed on: </span><span id="ToCDate">@item.CompletionDate</span>
+                            <span class="smallHed">Completed on (MM/dd/yyyy): </span><span id="ToCDate">@(item.CompletionDate.HasValue ? item.CompletionDate.Value.ToString("MM/dd/yyyy") : "")</span>
                         </div>
                     </div>
                 </div>
@@ -120,7 +120,7 @@
                                 <span class="smallHed">Description: </span><span id="TaDesc">@item2.Description</span>
                             </div>
                             <div class="col">
-                                <span class="smallHed">Deadline: </span><span id="TaDead">@item2.Deadline</span>
+                                <span class="smallHed">Deadline (MM/dd/yyyy): </span><span id="TaDead">@(item2.Deadline.HasValue ? item2.Deadline.Value.ToString("MM/dd/yyyy") : "")</span>
                             </div>
                             <div class="col">
                                 <span class="smallHed">Priority: </span><span id="TaPrio">@item2.Priority</span>
@@ -132,7 +132,7 @@
                         <div class="row">
                             @foreach (var item3 in item2.Notes)
                             {
-                                <div class="col-5 note">
+                                <div class="col-5 note mx-auto">
                                     <div class="text-right">
                                         <a asp-area="" asp-controller="Notes" asp-action="Edit" asp-route-id="@item3.Id"><img src="~/pen-to-square-solid.svg" height="18"/></a>
                                         <a asp-area="" asp-controller="Notes" asp-action="Delete" asp-route-id="@item3.Id" style="margin-left: .5em;"><img src="~/trash-can-solid.svg" height="17"/></a>
@@ -144,6 +144,7 @@
                         </div>
                     </div>
                 }
+                <br />
             </div>
         }
     }
