@@ -10,7 +10,7 @@ using System.Dynamic;
 using LearningDiaryApp.Data;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
-using Utility;
+using SearchObject;
 
 namespace LearningDiaryApp.Controllers
 {
