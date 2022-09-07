@@ -8,17 +8,11 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body onload="loginPrompt()">
-    <div class="row" id="login" style="display: none;">
-        <form class="col-3" id="formi" style="padding-left: 4em; padding-top: 4em;">
-            <label for="logg">Password</label>
-            <input class="form-control" name="Id" type="text" id="logg" autocomplete="off">
-        </form>
-        <button class="btn btn-primary col-1" Id="givePass" onclick="setPassword()" style="margin-left: 4em; margin-top: 1em; width: 4em; padding: .2em;">Enter</button>
-    </div>
+<body>
     <div id="allCont">
         <header class="sticky-top">
             <nav class="row">
+                <div class="col-1"></div>
                 <div class="col-1">
                     <a class="btn btn-primary" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                 </div>
@@ -27,9 +21,6 @@
                 </div>
                 <div class="col-1">
                     <a class="btn btn-primary" href="#" role="button" onclick="showInfo()" id="infoButt">Info</a>
-                </div>
-                <div class="col-1">
-                    <a class="btn btn-primary" href="#" role="button" onclick="logout()">Logout</a>
                 </div>
             </nav>
         </header>
